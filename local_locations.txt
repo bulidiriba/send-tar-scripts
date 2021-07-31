@@ -1,0 +1,2 @@
+tag	folder	schema
+v1_0_1	/Users/rich/srcsets/v1.0.1/	dir1
