@@ -64,17 +64,33 @@ def execute(file1, file2):
         
         results2 = " ".join(results)
         
+        # create the directory 
         if not os.path.exists("out"):
           os.mkdir("out")
-
+        
         if not os.path.exists(f"out/{tag}"):
           os.mkdir(f"out/{tag}")
 
-        f = open(f'out/{tag}/hashes.csv', "w")
+        # get the file name and path
+        file_name = "hashes.csv"
+        file_path = "out/"+tag+"/"+file_name
+        
+        f = open(file_path, "w")
         f.write(results2)
         f.close()
+        
+        # get the file size
+        file_stats = os.stat(file_path)
+        file_size = file_stats.st_size
+        file_size_metric = "bytes"
+    
+        result = {"file_name":file_name, 
+                  "file_path":file_path, 
+                  "file_size":file_size, 
+                  "file_size_metric":file_size_metric
+                  }
 
-        return results
+        return result
 
 #result = execute("local_locations.txt", "sw_location.txt")
 #print(result)
